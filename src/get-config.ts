@@ -1,6 +1,7 @@
 import { getValue } from './config'
 
-export function getConfig(){
-    console.log(`value2= ${getValue()}`)
+export function getConfig(label?:string){
+    console.log(`${label}: value2= ${getValue()}`)
+    
 }
 

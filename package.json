@@ -7,7 +7,7 @@
     "start": "npm run build && npm run serve",
     "build": "node ./esbuild.cjs",
     "build:webpack": "webpack",
-    "serve": "node ../dist/index.mjs"
+    "serve": "node --es-module-specifier-resolution=node --experimental-specifier-resolution=node ./dist/index.mjs"
   },
   "devDependencies": {
     "@esbuild-plugins/tsconfig-paths": "^0.0.4",

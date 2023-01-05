@@ -1,10 +1,7 @@
 const { build } = require("esbuild");
 const { nodeExternalsPlugin } = require("esbuild-node-externals");
 const { TsconfigPathsPlugin } = require("@esbuild-plugins/tsconfig-paths");
-const { readdirSync } = require("node:fs");
-const { resolve } = require("node:path");
 
-// todo: add type
 let esbuildConfig = {
   logLevel: "info",
   bundle: true,
@@ -14,17 +11,25 @@ let esbuildConfig = {
     nodeExternalsPlugin(),
     TsconfigPathsPlugin({ tsconfig: "./tsconfig.json" }),
   ],
-  external: [],
+  external: [
+    './get-config',
+    './config'
+  ],
   minify: false,
   packages: "external",
   splitting: false,
-  outdir: "../dist",
+  outdir: "./dist",
   outExtension: { ".js": ".mjs" },
+  // alias:{'config':'config.mjs'}
 };
 
 
- build({
-    ...esbuildConfig,
-    entryPoints: ["src/index.ts"],
-    entryNames: "[name]",
-  })
+Promise.all([
+  "index",
+  "get-config",
+  "config"
+].map(el=>build({
+  ...esbuildConfig,
+  entryPoints: [`src/${el}.ts`],
+})))
+.then(()=>console.log('==============================='))
