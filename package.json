@@ -1,0 +1,22 @@
+{
+  "name": "test-esbuild-getter",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "npm run build && npm run serve",
+    "build": "node ./esbuild.cjs",
+    "build:webpack": "webpack",
+    "serve": "node ../dist/index.mjs"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/tsconfig-paths": "^0.0.4",
+    "@types/node": "^18.11.18",
+    "esbuild": "^0.16.13",
+    "esbuild-node-externals": "^1.6.0",
+    "tsconfig-paths": "^4.1.2",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
