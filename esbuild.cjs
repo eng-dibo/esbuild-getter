@@ -12,8 +12,7 @@ let esbuildConfig = {
     TsconfigPathsPlugin({ tsconfig: "./tsconfig.json" }),
   ],
   external: [
-    './get-config',
-    './config'
+    './config','#config','./src/config','config','src/config'
   ],
   minify: false,
   packages: "external",
@@ -26,7 +25,6 @@ let esbuildConfig = {
 
 Promise.all([
   "index",
-  "get-config",
   "config"
 ].map(el=>build({
   ...esbuildConfig,

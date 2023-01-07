@@ -32,6 +32,7 @@
     "watch": false,
     "resolveJsonModule": true,
     "paths": {
+      "#*": ["./src/*"]
      },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

@@ -1,12 +1,19 @@
-import {getValue, setValue} from "./config";
+// issue: https://github.com/evanw/esbuild/issues/2803
+// to test if the code is splitting (i.e. excluded from bundling), change the log of each function in dist/config.mjs
+// then run `npm run serve` again without rebuilding
+
+// error: doesn't split
+import {example1} from "#config";
+example1()
+
+// split, but doesn't support aliases i.e: `#config`
+import('./config').then(m=>m.example2())
+
+// doesn't split
+import('#config').then(m=>m.example3())
+
+// split, but types for example4() doesn't imported, i.e example()'s type is any
+import(`${'#config'}`).then(m=>m.example4())
 
 
-setValue('test')
-console.log(`value1= ${getValue()}`)
 
-
-
-// import('./get-config').then(m=>m.getConfig('aaa'))
-// import('./get-config.mjs').then(m=>m.getConfig('bbb'))
-// import(`./${'get-config'}`).then(m=>m.getConfig('ccc'))
-import(`./${'get-config.mjs'}`).then(m=>m.getConfig('ddd'))
