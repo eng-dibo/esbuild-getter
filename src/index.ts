@@ -4,9 +4,12 @@
 
 // it works in all cases if src/config.ts doesn't exist, but TS will complain about missing the module
 
+
 // error: doesn't split
+// "./config" works, but dosen't support aliases
 import {example1} from "#config";
 example1()
+
 
 // split, but doesn't support aliases i.e: `#config`
 import('./config').then(m=>m.example2())
