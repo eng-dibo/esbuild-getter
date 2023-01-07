@@ -25,7 +25,7 @@ let esbuildConfig = {
 
 Promise.all([
   "index",
-  "config"
+  // "config"
 ].map(el=>build({
   ...esbuildConfig,
   entryPoints: [`src/${el}.ts`],

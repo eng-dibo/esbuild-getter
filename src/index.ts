@@ -2,6 +2,8 @@
 // to test if the code is splitting (i.e. excluded from bundling), change the log of each function in dist/config.mjs
 // then run `npm run serve` again without rebuilding
 
+// it works in all cases if src/config.ts doesn't exist, but TS will complain about missing the module
+
 // error: doesn't split
 import {example1} from "#config";
 example1()
