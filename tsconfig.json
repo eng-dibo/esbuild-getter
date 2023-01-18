@@ -49,7 +49,6 @@
     "require": ["tsconfig-paths/register"],
     "transpileOnly": true,
     "moduleTypes": {
-      // compile `webpack.config.ts` as commonjs
       "**/webpack.config.ts": "cjs"
     }
   }

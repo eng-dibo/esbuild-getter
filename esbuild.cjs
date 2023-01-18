@@ -1,6 +1,7 @@
 const { build } = require("esbuild");
 const { nodeExternalsPlugin } = require("esbuild-node-externals");
 const { TsconfigPathsPlugin } = require("@esbuild-plugins/tsconfig-paths");
+const { tsConfigPaths } = require("./esbuild-plugin.cjs")
 const {resolve} = require('path')
 
 
@@ -11,7 +12,8 @@ let esbuildConfig = {
   format: "esm",
   plugins: [
     nodeExternalsPlugin(),
-    TsconfigPathsPlugin({ tsconfig: "./tsconfig.json" }),
+    // TsconfigPathsPlugin({ tsconfig: "./tsconfig.json" }),
+    tsConfigPaths({ tsConfigPath: resolve(__dirname, "./tsconfig.json") })
   ],
   external: [
     './config','#config','./src/config','config','src/config',    
